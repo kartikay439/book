@@ -3,9 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine import URL
 
-DATABASE_URL = (
-    "Driver={ODBC Driver 18 for SQL Server};Server=tcp:kartikay.database.windows.net,1433;Database=harit;Uid=kartikay;Pwd=Sunny439@;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-)
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 connection_string = URL.create("mssql+pyodbc", query={"odbc_connect": DATABASE_URL})
 engine = create_engine(connection_string)
